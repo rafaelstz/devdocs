@@ -69,7 +69,9 @@ Observers are a certain type of Magento class that can influence general behavio
 To create an observer, you must place your class file under your `<module-root>/Observer` directory. Your observer class should implement [`Magento\Framework\Event\ObserverInterface`]({{ site.mage2000url }}lib/internal/Magento/Framework/Event/ObserverInterface.php) and define its `execute` function.
 
 Below is an example of the basic observer class structure:
+
 {% highlight php startinline=true %}
+
 namespace MyCompany\MyModule\Observer;
 
 use Magento\Framework\Event\ObserverInterface;
@@ -87,11 +89,13 @@ class MyObserver implements ObserverInterface
     // Observer execution code...
   }
 }
+
 {% endhighlight %}
 
 One of the more powerful feature of observers is that they are able to use parameters passed into the event when it was dispatched. Below is an example of an observer obtaining data passed in when the event was dispatched.
 
 {% highlight php startinline=true %}
+
 namespace MyCompany\MyModule\Observer;
 
 use Magento\Framework\Event\ObserverInterface;
@@ -110,6 +114,7 @@ class AnotherObserver implements ObserverInterface
     // Additional observer execution code...
   }
 }
+
 {% endhighlight %}
 
 #### Subscribing to events
@@ -125,7 +130,9 @@ The `observer` {% glossarytooltip 8c0645c5-aa6b-4a52-8266-5659a8b9d079 %}xml{% e
 
 
 Below is an example of how to assign observers to watch certain events:
+
 {% highlight xml %}
+
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="my_module_event_before">
@@ -135,6 +142,7 @@ Below is an example of how to assign observers to watch certain events:
         <observer name="myObserverName" instance="MyCompany\MyModule\Observer\AnotherObserver" />
     </event>
 </config>
+
 {% endhighlight %}
 
 In the preceding example, we assign the observer `MyObserver` to the custom event `my_module_event_before` and `AnotherObserver` to `my_module_event_after`.
